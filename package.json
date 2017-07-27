@@ -1,17 +1,22 @@
 {
-	"name": "fcc-learn-npm-package-json",
-	"dependencies": {
-		"express": "^4.14.0"
-	},
-	"main": "server.js",
-	"scripts": {
-		"start": "node server.js"
-	},
-	"engines": {
-		"node": "4.4.5"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://idontknow/todo.git"
-	}
+  "author": "grahamsanders",
+  "name": "fcc-timestamp-ms",
+  "version": "0.0.1",
+  "description": "freeCodeCamp Timestamp Microservice",
+  "keywords": [
+    "timestamp",
+    "freecodecamp"
+  ],
+  "dependencies": {
+    "express": "^4.15.3",
+    "moment": "^2.18.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "4.4.5"
+  },
+  "license": "MIT"
 }

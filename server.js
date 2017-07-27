@@ -5,9 +5,9 @@
 
 'use strict';
 
-var fs = require('fs');
 var express = require('express');
 var app = express();
+var moment = require('moment');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -22,16 +22,18 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.use('/public', express.static(process.cwd() + '/public'));
-
-app.route('/_api/package.json')
+app.route('/:datestamp')
   .get(function(req, res, next) {
-    console.log('requested');
-    fs.readFile(__dirname + '/package.json', function(err, data) {
-      if(err) return next(err);
-      res.type('txt').send(data.toString());
-    });
+    var date = moment(req.params.datestamp, [ "X", "MMMM DD, YYYY" ], true);
+    res.status(200);
+    if (date.isValid()) {
+      res.send( { "unix": date.format("X"), "natural": date.format("MMMM DD, YYYY") } );
+    } else {
+      res.send( { "unix": null, "natural": null } );
+    }
   });
+
+app.use('/public', express.static(process.cwd() + '/public'));
   
 app.route('/')
     .get(function(req, res) {
