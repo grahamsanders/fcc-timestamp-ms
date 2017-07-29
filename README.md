@@ -1,1 +1,2 @@
-# Backend Challenges boilerplate - package.json
+# fcc-timestamp-ms
+freeCodeCamp Timestamp Microservice project
